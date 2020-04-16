@@ -5,6 +5,7 @@
 #include "p2Point.h"
 #include "p2List.h"
 #include "j1Module.h"
+#include <math.h>
 
 enum class RESIZETYPE
 {
@@ -46,7 +47,7 @@ public:
 	// Called before the first frame
 	bool Start();
 
-	//void CreateCameras();
+	bool CreateCameras();
 
 	// Called each loop iteration
 	bool PreUpdate();
@@ -76,12 +77,14 @@ public:
 	void SetBackgroundColor(SDL_Color color);
 
 public:
-
+	int max_cameras = 4;
 	SDL_Renderer*		renderer;
 	Camera*				camera;
-	Camera*				camera2;
+	Camera*				camera_aux;
 	SDL_Rect			viewport;
 	SDL_Color			background;
+	int num_of_cameras;
+	p2List<Camera*>		cameras;
 };
 
 #endif // __j1RENDER_H__

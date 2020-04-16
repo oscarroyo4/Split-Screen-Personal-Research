@@ -42,26 +42,85 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		camera = new Camera();
-		camera->rect.w = App->win->screen_surface->w / 2;
-		camera->rect.h = App->win->screen_surface->h;
-		camera->rect.x = 0;
-		camera->rect.y = 0;
-		camera->screen_section.w = App->win->screen_surface->w / 2;
-		camera->screen_section.h = App->win->screen_surface->h;
-		camera->screen_section.x = 0;
-		camera->screen_section.y = 0;
-		camera2 = new Camera();
-		camera2->rect.w = App->win->screen_surface->w / 2;
-		camera2->rect.h = App->win->screen_surface->h;
-		camera2->rect.x = 0;
-		camera2->rect.y = 0;
-		camera2->screen_section.w = App->win->screen_surface->w / 2;
-		camera2->screen_section.h = App->win->screen_surface->h;
-		camera2->screen_section.x = App->win->screen_surface->w / 2;
-		camera2->screen_section.y = 0;
+		num_of_cameras = 2;
+		ret = CreateCameras();
 	}
 
+	return ret;
+}
+
+bool j1Render::CreateCameras() 
+{
+	bool ret = true;
+
+	if (num_of_cameras > max_cameras || num_of_cameras == 0) 
+	{
+		LOG("Wrong number of cameras");
+		ret = false;
+	}
+	else 
+	{
+		int screen_width = App->win->screen_surface->w;
+		int screen_height = App->win->screen_surface->h;
+
+		int columns = 1;
+		int rows = 1;
+		int current_column = 0;
+		int current_row = 0;
+
+		bool resize = false;
+
+		if (screen_width / num_of_cameras < screen_height * 0.5f) 
+		{
+			rows++;
+			if (num_of_cameras % 2 == 0) {
+				columns = num_of_cameras / rows;
+			} 
+			else
+			{
+				columns++;
+				resize = true;
+			}
+		}
+		else {
+			columns = num_of_cameras;
+		}
+
+		for (int num = 0; num < num_of_cameras; num++) 
+		{
+			camera_aux = new Camera();
+
+			if (num == num_of_cameras - 1 && resize == true) 
+			{
+				camera_aux->rect.w = screen_width;
+				camera_aux->screen_section.w = screen_width;
+				camera_aux->screen_section.x = 0;
+			}
+			else 
+			{
+				camera_aux->rect.w = screen_width / columns;
+				camera_aux->screen_section.w = screen_width / columns;
+				camera_aux->screen_section.x = camera_aux->rect.w * current_column;
+			}
+			camera_aux->rect.h = screen_height / rows;
+			camera_aux->rect.x = 0;
+			camera_aux->rect.y = 0;
+			camera_aux->screen_section.h = screen_height / rows;
+			camera_aux->screen_section.y = camera_aux->rect.h * current_row;
+
+
+			if (current_column < columns-1)
+				current_column++;
+			else
+			{
+				current_column = 0;
+				current_row++;
+			}
+
+			cameras.add(camera_aux);
+		}
+		camera = cameras.At(0)->data;
+	}
 	return ret;
 }
 

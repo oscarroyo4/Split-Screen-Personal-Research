@@ -30,10 +30,8 @@ void j1Map::Draw()
 {
 	if(map_loaded == false)
 		return;
-	for (int i = 0; i < 2; i++) {
-		Camera* cam;
-		if (i == 0) cam = App->render->camera;
-		else cam = App->render->camera2;
+	for (int i = 0; i < App->render->num_of_cameras; i++) {
+		Camera* cam = App->render->cameras.At(i)->data;
 
 		SDL_RenderSetClipRect(App->render->renderer, &cam->screen_section);
 
