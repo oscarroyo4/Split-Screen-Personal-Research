@@ -50,30 +50,6 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
-
-	// debug pathfing ------------------
-	static iPoint origin;
-	static bool origin_selected = false;
-
-	int x, y;
-	App->input->GetMousePosition(x, y);
-	iPoint p = App->render->ScreenToWorld(x, y);
-	p = App->map->WorldToMap(p.x, p.y);
-
-	if(App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
-	{
-		if(origin_selected == true)
-		{
-			App->pathfinding->CreatePath(origin, p);
-			origin_selected = false;
-		}
-		else
-		{
-			origin = p;
-			origin_selected = true;
-		}
-	}
-
 	return true;
 }
 
@@ -82,17 +58,17 @@ bool j1Scene::Update(float dt)
 {
 	if (App->render->num_of_cameras >= 1) 
 	{
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x -= floor(200.0f * dt);
 	}
 	if (App->render->num_of_cameras >= 2) 
 	{
-		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_T) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_G) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_H) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x -= floor(200.0f * dt);
 	}
 	if (App->render->num_of_cameras >= 3)
 	{
@@ -103,10 +79,10 @@ bool j1Scene::Update(float dt)
 	}
 	if (App->render->num_of_cameras >= 4)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_T) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_G) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_H) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.x += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) App->render->cameras.At(3)->data->rect.x -= floor(200.0f * dt);
 	}
 
 	App->map->Draw();

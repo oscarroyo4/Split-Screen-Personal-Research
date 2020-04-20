@@ -20,16 +20,9 @@ class Camera
 public:
 	Camera();
 
-	//void FollowPlayer(float dt, fPoint player);
-
 public:
 	SDL_Rect rect = { 0, 0, 0, 0 };//The actual camera coordinates in the world
 	SDL_Rect screen_section = { 0, 0, 0, 0 };//The section on the screen it covers (ex. player one gets 0, 0, w/2, h/2)
-	bool assigned = false;
-	uint number_player = 0u;
-
-private:
-	float lerp_factor = 0.f;
 };
 
 class j1Render : public j1Module
@@ -77,13 +70,14 @@ public:
 	void SetBackgroundColor(SDL_Color color);
 
 public:
+	int num_of_cameras;
 	int max_cameras = 4;
+	int margin;
 	SDL_Renderer*		renderer;
 	Camera*				camera;
 	Camera*				camera_aux;
 	SDL_Rect			viewport;
 	SDL_Color			background;
-	int num_of_cameras;
 	p2List<Camera*>		cameras;
 };
 

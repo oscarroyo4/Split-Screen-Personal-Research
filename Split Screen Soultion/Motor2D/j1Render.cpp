@@ -42,7 +42,9 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		num_of_cameras = 2;
+
+		num_of_cameras = config.child("cameras").attribute("quantity").as_int();
+		margin = config.child("cameras").attribute("margin").as_int();
 		ret = CreateCameras();
 	}
 
@@ -93,20 +95,20 @@ bool j1Render::CreateCameras()
 			if (num == num_of_cameras - 1 && resize == true) 
 			{
 				camera_aux->rect.w = screen_width;
-				camera_aux->screen_section.w = screen_width;
-				camera_aux->screen_section.x = 0;
+				camera_aux->screen_section.w = screen_width - (margin * 2);
+				camera_aux->screen_section.x = margin;
 			}
 			else 
 			{
 				camera_aux->rect.w = screen_width / columns;
-				camera_aux->screen_section.w = screen_width / columns;
-				camera_aux->screen_section.x = camera_aux->rect.w * current_column;
+				camera_aux->screen_section.w = (screen_width / columns) - (margin*2);
+				camera_aux->screen_section.x = (camera_aux->screen_section.w * current_column) + (margin * ((current_column*2)+1));
 			}
 			camera_aux->rect.h = screen_height / rows;
 			camera_aux->rect.x = 0;
 			camera_aux->rect.y = 0;
-			camera_aux->screen_section.h = screen_height / rows;
-			camera_aux->screen_section.y = camera_aux->rect.h * current_row;
+			camera_aux->screen_section.h = (screen_height / rows) - (margin*2);
+			camera_aux->screen_section.y = (camera_aux->screen_section.h * current_row) + (margin * ((current_row*2)+1));
 
 
 			if (current_column < columns-1)
@@ -337,5 +339,5 @@ bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h
 
 Camera::Camera()
 {
-	lerp_factor = 5.f;
+
 }
