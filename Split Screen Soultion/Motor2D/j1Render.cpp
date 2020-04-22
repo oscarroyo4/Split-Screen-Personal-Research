@@ -42,7 +42,7 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-
+		//TODO 3: Load the two variables from the config file and execute the function to create the cameras.
 		num_of_cameras = config.child("cameras").attribute("quantity").as_int();
 		margin = config.child("cameras").attribute("margin").as_int();
 		ret = CreateCameras();
@@ -62,9 +62,10 @@ bool j1Render::CreateCameras()
 	}
 	else 
 	{
+		//TODO 4: Store the screen width and height in local variables. Create four local variables for the number of columns and the current one and 
+		//the number of rows and the current one. Also we need a bool to now if we need to resize any of the cameras or not.
 		int screen_width = App->win->screen_surface->w;
 		int screen_height = App->win->screen_surface->h;
-
 		int columns = 1;
 		int rows = 1;
 		int current_column = 0;
@@ -72,6 +73,8 @@ bool j1Render::CreateCameras()
 
 		bool resize = false;
 
+		//TODO 5: If the width of each camera is smaller than half of the screen height, we add a row. And then, if the number of cameras is pair the 
+		//number of columns will depend in the rows, else we add a column and set the resize variable to true.
 		if (screen_width / num_of_cameras < screen_height * 0.5f) 
 		{
 			rows++;
@@ -90,7 +93,7 @@ bool j1Render::CreateCameras()
 
 		for (int num = 0; num < num_of_cameras; num++) 
 		{
-			camera_aux = new Camera();
+			Camera* camera_aux = new Camera();
 
 			if (num == num_of_cameras - 1 && resize == true) 
 			{
@@ -121,7 +124,6 @@ bool j1Render::CreateCameras()
 
 			cameras.add(camera_aux);
 		}
-		camera = cameras.At(0)->data;
 	}
 	return ret;
 }
@@ -193,13 +195,13 @@ void j1Render::ResetViewPort()
 	SDL_RenderSetViewport(renderer, &viewport);
 }
 
-iPoint j1Render::ScreenToWorld(int x, int y) const
+iPoint j1Render::ScreenToWorld(Camera* cam, int x, int y) const
 {
 	iPoint ret;
 	int scale = App->win->GetScale();
 
-	ret.x = (x - camera->rect.x / scale);
-	ret.y = (y - camera->rect.y / scale);
+	ret.x = (x - cam->rect.x / scale);
+	ret.y = (y - cam->rect.y / scale);
 
 	return ret;
 }
@@ -239,88 +241,6 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 	if(SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, SDL_FLIP_NONE) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
-		ret = false;
-	}
-
-	return ret;
-}
-
-bool j1Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool filled, bool use_camera) const
-{
-	bool ret = true;
-	uint scale = App->win->GetScale();
-
-	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-
-	SDL_Rect rec(rect);
-	if(use_camera)
-	{
-		rec.x = (int)(camera->rect.x + rect.x * scale);
-		rec.y = (int)(camera->rect.y + rect.y * scale);
-		rec.w *= scale;
-		rec.h *= scale;
-	}
-
-	int result = (filled) ? SDL_RenderFillRect(renderer, &rec) : SDL_RenderDrawRect(renderer, &rec);
-
-	if(result != 0)
-	{
-		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
-		ret = false;
-	}
-
-	return ret;
-}
-
-bool j1Render::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
-{
-	bool ret = true;
-	uint scale = App->win->GetScale();
-
-	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-
-	int result = -1;
-
-	if(use_camera)
-		result = SDL_RenderDrawLine(renderer, camera->rect.x + x1 * scale, camera->rect.y + y1 * scale, camera->rect.x + x2 * scale, camera->rect.y + y2 * scale);
-	else
-		result = SDL_RenderDrawLine(renderer, x1 * scale, y1 * scale, x2 * scale, y2 * scale);
-
-	if(result != 0)
-	{
-		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
-		ret = false;
-	}
-
-	return ret;
-}
-
-bool j1Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
-{
-	bool ret = true;
-	uint scale = App->win->GetScale();
-
-	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-
-	int result = -1;
-	SDL_Point points[360];
-
-	float factor = (float)M_PI / 180.0f;
-
-	for(uint i = 0; i < 360; ++i)
-	{
-		points[i].x = (int)(x + radius * cos(i * factor));
-		points[i].y = (int)(y + radius * sin(i * factor));
-	}
-
-	result = SDL_RenderDrawPoints(renderer, points, 360);
-
-	if(result != 0)
-	{
-		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
 		ret = false;
 	}
 
