@@ -66,7 +66,7 @@ Some games have multiple primary focus points, but don't have a local multiplaye
 
 # Our Split Screen
 ## Important changes (code)
-Now we have a new class Camera in the render script, it has two Rects. The rect is the actual coordinates of the camera in the world, and the screen_section is the size and position of each camera in the screen.
+1.Now we have a new class Camera in the render script that has two Rects. The rect is the actual coordinates of the camera in the world, and the screen_section is the size and position of each camera in the screen.
 
 ```
 class Camera
@@ -80,7 +80,7 @@ public:
 };
 ```
 
-Now, for each blit of the map we have to do a for to pass all cameras and make the blit:
+2.For each blit of the map we have to do a for to gow through all cameras and check if the tile is inside the camera view:
 
 ```
 void j1Map::Draw()
@@ -114,7 +114,9 @@ void j1Map::Draw()
 						SDL_Rect r = tileset->GetTileRect(tile_id);
 						iPoint pos = MapToWorld(x, y);
 
-						App->render->Blit(tileset->texture, pos.x, pos.y, cam, &r);
+						
+						if(App->render->IsOnCamera(pos.x,pos.y,tileset->tile_width,tileset->tile_height,cam))
+							App->render->Blit(tileset->texture, pos.x, pos.y, cam, &r);
 					}
 				}
 			}
@@ -123,6 +125,9 @@ void j1Map::Draw()
 	}
 }
 ```
+
+The blit funcion now has a camera parameter so we print on each camera separately.
+
 ```
 bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y) const
 {
@@ -164,10 +169,11 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 	return ret;
 }
 ```
+
 ## Improvements
 Some problems with this system are:
 
--The number of cameras is fixed during execution. You could implement a change of the number of cameras in real-time, you should have to add a DeleteCameras() funciton and a variable input in the CreateCameras() function to tell it how many cameras to create.
+-The number of cameras is fixed during execution. You could implement a change of the number of cameras in real-time, you have to add a DeleteCameras() funciton and a variable input in the CreateCameras() function to tell it how many cameras to create.
 
 -You can't decide where to place each camera. For example, you can't place the camera 1 in the right bottom corner, it will always follow an order.
 
