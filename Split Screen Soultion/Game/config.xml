@@ -9,7 +9,7 @@
   <renderer>
     <vsync value="true"/>
     <!--TODO 1: Create a new child called camera that stores the quantity of cameras and the margin between them.-->
-    <cameras quantity="4" margin="5"/>
+    <cameras quantity="3" margin="5"/>
   </renderer>
 
   <window>

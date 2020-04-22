@@ -73,8 +73,8 @@ bool j1Render::CreateCameras()
 
 		bool resize = false;
 
-		//TODO 5: If the width of each camera is smaller than half of the screen height, we add a row. And then, if the number of cameras is pair the 
-		//number of columns will depend in the rows, else we add a column and set the resize variable to true.
+		//TODO 5: If the width of each camera is smaller than half of the screen height, we add a row, else columns will be the number of cameras. 
+		//Inside the if, if the number of cameras is pair, the number of columns will depend in the rows, else we add a column and set the resize variable to true.
 		if (screen_width / num_of_cameras < screen_height * 0.5f) 
 		{
 			rows++;
@@ -87,7 +87,8 @@ bool j1Render::CreateCameras()
 				resize = true;
 			}
 		}
-		else {
+		else 
+		{
 			columns = num_of_cameras;
 		}
 
@@ -95,33 +96,41 @@ bool j1Render::CreateCameras()
 		{
 			Camera* camera_aux = new Camera();
 
+			//Assigning width for each camera
 			if (num == num_of_cameras - 1 && resize == true) 
 			{
+				//If the last camera has to be resized
 				camera_aux->rect.w = screen_width;
 				camera_aux->screen_section.w = screen_width - (margin * 2);
 				camera_aux->screen_section.x = margin;
 			}
 			else 
 			{
+				//If the last camera doesn't have to be resized
 				camera_aux->rect.w = screen_width / columns;
 				camera_aux->screen_section.w = (screen_width / columns) - (margin*2);
 				camera_aux->screen_section.x = (camera_aux->screen_section.w * current_column) + (margin * ((current_column*2)+1));
 			}
+			//Assigning height for each camera
 			camera_aux->rect.h = screen_height / rows;
 			camera_aux->rect.x = 0;
 			camera_aux->rect.y = 0;
 			camera_aux->screen_section.h = (screen_height / rows) - (margin*2);
 			camera_aux->screen_section.y = (camera_aux->screen_section.h * current_row) + (margin * ((current_row*2)+1));
-
-
-			if (current_column < columns-1)
+			
+			//TODO 6: We need to change the current column and current row when we finish each loop. Remember that if we change the current row the current column
+			//has to be 0 again.
+			if (current_column < columns - 1) 
+			{
 				current_column++;
+			}
 			else
 			{
 				current_column = 0;
 				current_row++;
 			}
 
+			//We add the auxiliar camera to the cameras list.
 			cameras.add(camera_aux);
 		}
 	}
@@ -252,8 +261,8 @@ bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h
 	float scale = App->win->GetScale();
 
 	SDL_Rect r = { x * scale, y * scale, w * scale, h * scale };
-
-	return SDL_HasIntersection(&r, &cam->rect);
+	SDL_Rect cam_r = { cam->rect.x + cam->screen_section.x, cam->rect.y + cam->screen_section.y, cam->rect.w, cam->rect.h };
+	return SDL_HasIntersection(&r, &cam_r);
 }
 
 

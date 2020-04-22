@@ -58,24 +58,24 @@ bool j1Scene::Update(float dt)
 {
 	if (App->render->num_of_cameras >= 1) 
 	{
-		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.x += floor(200.0f * dt);
 	}
 	if (App->render->num_of_cameras >= 2) 
 	{
-		if (App->input->GetKey(SDL_SCANCODE_T) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_G) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_H) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_T) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_G) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_H) == KEY_REPEAT) App->render->cameras.At(1)->data->rect.x += floor(200.0f * dt);
 	}
 	if (App->render->num_of_cameras >= 3)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.y += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.y -= floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.x += floor(200.0f * dt);
-		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.y -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.y += floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.x -= floor(200.0f * dt);
+		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT) App->render->cameras.At(2)->data->rect.x += floor(200.0f * dt);
 	}
 	if (App->render->num_of_cameras >= 4)
 	{
