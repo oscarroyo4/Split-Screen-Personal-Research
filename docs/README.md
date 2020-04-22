@@ -14,9 +14,9 @@ There is a presentation for this project. You can check it out [here](https://do
 Split screen is the capacity of a software to split X times their window with a horizontal or vertical orientation. The objective is that the user or player can see different areas of the same or other softwares at the same time.
 
 ## When we need a split screen?
-It's an option to implement when we have multiple primary focus points that we need to have them at the same time on the screen and under control. Some exemples of software that use this technique can be any 3D modeling program. In video games, the common case is a game with local multiplayer, but not all local multiplayer games need a split screen. If the players can not separate from each other and leave the screen on the stage, you can search for an alternative to the split screen.
+It's an option to implement when we have multiple primary focus points that we need to have at the same time on the screen and under control. Some exemples of software that use this technique can be any 3D modeling program. In video games, the common case is a game with local multiplayer, but not all local multiplayer games need a split screen. If the players can not separate from each other and leave the screen on the stage, you can search for an alternative to the split screen.
 
-Some exemples of that, are games *overcoocked* or *Cuphead*, that the players can not go out off the screen. Examples of local multiplayer games that need a split screen are any racing game or shooter, both players need the control of their character and camera.
+Some exemples of this are the games *overcoocked* or *Cuphead*, that the players can not go out off the screen. Examples of local multiplayer games that need a split screen are any racing game or shooter, both players need the control of their character and camera.
 
 ## Alternatives to the split screen
 Depending of the game, we don't need to implement a split screen, we can take an alternative that fulfills the function we need. Here are some alternatives and their advantages and disadvantages.
@@ -31,42 +31,44 @@ This is a terrible option. The players can go off the screen and they can not se
 This is a radical option. Only usefull in games that we want to punish the player for going off screen. Competitive fighting games like *Smash Bros* implement this option because the objective is to avoid leaving the map and throwing the opponent out. In general cases, it's very anoying to the player.
 
 **Teleport the player to the group.**
-At least, we don't kill the player, but it feels anoying too. When a player goes too far of the other ones, it is teleported to the group.
+This option also feels anoying, but at least we don't kill the player. When a player goes too far away from the other ones, it is teleported to the group.
 
 **The player can drag the screen and the other players.**
-If the player is pushing an edge of the screen he drags the it, and the other players too. This option affects the player's gameplay, not only his own gameplay, but also the other player's gameplay. 
+If the player is pushing an edge of the screen he drags it, and the other players too. This option affects the player's gameplay, not only his own gameplay, but also the other player's gameplay. 
 
 **Zoom out to keep players inside the screen.**
-In this option, the camera does a zoom out when the players move away from each other up to a limit to keep the players inside the screen, but it doesn't resolve the problems.
+In this option, the camera zooms out when the players move away from each other to keep the players inside the screen up to a limit, but it doesn't resolve the problems.
 
 **Split screen.**
-If we choose this option, we resolve the previous problems and we don't affect the gameplay of the players, but we get other problems. We can give to each player their own camera and the total control of it, but each player is loosing a 50% or 75% of the screen depending if their are 2,3 or 4 players. For example, any game in first person with local multiplayer needs a split screen because each player needs to have their own camera. Another problem is the large amount of resources we spend on the split screen, because it is necessary to paint the game more times per frame, one for each camera. This is one of the most important reasons why the split screen is not used in this days. 
+If we choose this option, we resolve the previous problems and we don't affect the gameplay of the players, but we find other problems. We can give to each player their own camera and the total control of it, but they will lose a 50% or 75% of their screen depending if they are 2, 3 or more players. For example, any game in first person with local multiplayer needs a split screen because each player needs to have their own camera. Another problem is the large amount of resources we spend on the split screen, because it is necessary to paint the game more times per frame, one time for each camera. This is one of the most important reasons why the split screen is not used in this days. 
 
 In most cases in local multiplayer games, more exactly in cooperative games, most of the time the players are together, and we are spending a lot of resources needlessly. If we have this situation, we can imeplement the Voronoi split screen.
 
 ## Voronoi Split Screen
-In the Voronoi split screen, when the players are together, the screen is not splitted But at the moment the players are outside the range of the camera, the screen is splitted between them, indicating the direction of where the other players are. With this, when the players are together, we are not spending unnecessary resources and we are not limiting the size of their screen because they share the same camera until they separate. Some games are using Voronoi with 2 players, for example someones of the saga "*Lego*" like *LEGO Marvel Super Heroes*.
+In the Voronoi split screen, when the players are together, the screen is not splitted. But when the players are outside the range of the camera, the screen is splitted between them, indicating the direction of where the other players are. With this technique, when the players are together, we are not spending unnecessary resources and we are not limiting the size of their screen because they share the same camera until they separate. Many games are using Voronoi with 2 players, for example someones of the saga "*Lego*" like *LEGO Marvel Super Heroes*.
 
 ![](Voronoi_2_Players.gif)
 
 *Test of Voronoi with 2 players in Unreal.*
 
-With two players, Voronoi works pretty well. But when we add 4 players in total its a little bit caothic, because all cameras are moving between their and changing their position or mergering between each other, and the size of each camera is different. The shape of each camera is different and strange, causing confusion to the players. Personally, i don't recommend to use Voronoi with more than 2 players. Practically, no game is using Voronoi with more than 2 players.
+With two players, Voronoi works pretty well. But when we add 4 players in total its a little bit caothic, because all cameras are moving between them and changing their position or mergering between each other. The shape and size of each camera is different and strange, causing confusion to the players. Personally, i don't recommend to use Voronoi with more than 2 players. Practically, no game is using Voronoi with more than 2 players.
 
 ![](Voronoi_4_Players.gif)
 
 *Test of Voronoi with 4 players in c++.*
 
 ## Games that create new windows
-Some games have multiple primary focus points, but don't have a local multiplayer mode. In this cases, this games can create new windows with their own camera, to see the primary focus points that the player want to see. This games don't need a split screen and the player can chose what points and how meny he wants to have. They are usually management games, an example is an old game named *Transport Tycoon*.
+Some games have multiple primary focus points, but don't have a local multiplayer mode. In this cases, this games can create new windows with their own camera, to see the primary focus points that the player wants. This games don't need a split screen and the player can chose what points and how meny he wants to have. They are usually management games, an example is an old game named *Transport Tycoon*.
 
 ![](Transport_Tycoon.gif)
 
 *Gif of Transport Tycoon with some windows.*
 
-# Our Split Screen
+# Our Split Screen and implementation
+We will make a normal split screen capable of splitting 1, 2, 3 or 4 cameras. It will not be Voronoi because they don't use rects and it's very complex.
+
 ## Important changes (code)
-1.Now we have a new class Camera in the render script that has two Rects. The rect is the actual coordinates of the camera in the world, and the screen_section is the size and position of each camera in the screen.
+1. Now we have a new class Camera in the render script that has two Rects. The rect is the actual coordinates of the camera in the world, and the screen_section is the size and position of each camera in the screen.
 
 ```
 class Camera
@@ -80,7 +82,7 @@ public:
 };
 ```
 
-2.For each blit of the map we have to do a for to gow through all cameras and check if the tile is inside the camera view:
+2. For each blit of the map we have to do a for to gow through all cameras and check if the tile is inside the camera view:
 
 ```
 void j1Map::Draw()
@@ -126,7 +128,7 @@ void j1Map::Draw()
 }
 ```
 
-The blit funcion now has a camera parameter so we print on each camera separately.
+3. The blit funcion now has a camera parameter so we print on each camera separately.
 
 ```
 bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y) const
@@ -169,7 +171,15 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 	return ret;
 }
 ```
-
+## Exercicies
+### TODO 1
+### TODO 2
+### TODO 3
+### TODO 4
+### TODO 5
+### TODO 6
+### TODO 7
+### TODO 8
 ## Improvements
 Some problems with this system are:
 
