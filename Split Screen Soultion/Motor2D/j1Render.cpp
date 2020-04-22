@@ -118,7 +118,7 @@ bool j1Render::CreateCameras()
 			camera_aux->screen_section.h = (screen_height / rows) - (margin*2);
 			camera_aux->screen_section.y = (camera_aux->screen_section.h * current_row) + (margin * ((current_row*2)+1));
 			
-			//TODO 6: Un-comment this hole part. We need to change the current column and current row when we finish each loop. Remember that if we change the current row 
+			//TODO 6: Uncomment this hole part. We need to change the current column and current row when we finish each loop. Remember that if we change the current row 
 			// the current column has to be 0 again.
 			if (current_column < columns - 1) 
 			{
@@ -264,7 +264,6 @@ bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h
 	SDL_Rect cam_r = { cam->rect.x + cam->screen_section.x, cam->rect.y + cam->screen_section.y, cam->rect.w, cam->rect.h };
 	return SDL_HasIntersection(&r, &cam_r);
 }
-
 
 Camera::Camera()
 {

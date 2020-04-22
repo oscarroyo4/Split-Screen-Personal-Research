@@ -66,7 +66,8 @@ Some games have multiple primary focus points, but don't have a local multiplaye
 
 # Our Split Screen and implementation
 We will make a normal split screen capable of splitting 1, 2, 3 or 4 cameras (camera quantity is limited to 4 because of the screen size). It will not be Voronoi because they don't use rects and it's very complex.
-
+![](Solution_3Cams.PNG)
+![](Solution_4Cams.PNG)
 ## Important changes (code)
 1. Now we have a new class Camera in the j1Render.h that has two Rects. The rect is the actual coordinates of the camera in the world, and the screen_section is the size and position of each camera in the screen.
 
