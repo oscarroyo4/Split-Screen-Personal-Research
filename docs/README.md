@@ -1,13 +1,13 @@
 I am [Oscar Royo](https://github.com/oscarroyo4) , student of the [Video Games Degree by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second year’s
 subject Project 2.
 
-Go to the repository of the [Split Screen](https://github.com/oscarroyo4/Split_Screen-Personal_Research).
+To see the full github project go to the repository of the [Split Screen](https://github.com/oscarroyo4/Split_Screen-Personal_Research).
 
-Go to the exercises, download the repository and go to the *Exercises* folder.
+To do the exercises, download the repository and go to the *Exercises* folder.
 
 If you want to see the solution, you can download the repository and go to the *Solution* folder.
 
-There is a presentation for this project. You can enter [here](https://docs.google.com/presentation/d/1DIwF2yxN7bLa2aXyK9HJKx6QBOugMJ8Q1V9O3mZr850/edit?usp=sharing).
+There is a presentation for this project. You can check it out [here](https://docs.google.com/presentation/d/1DIwF2yxN7bLa2aXyK9HJKx6QBOugMJ8Q1V9O3mZr850/edit?usp=sharing).
 
 
 # Split Screen
