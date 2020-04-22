@@ -11,7 +11,7 @@ There is a presentation for this project. You can check it out [here](https://do
 
 
 # Split Screen
-A split screen is the capacity of a software to split X times their window with a horizontal or vertical orientation. The objective is that the user or player can view different areas of the same or other softwares at the same time.
+Split screen is the capacity of a software to split X times their window with a horizontal or vertical orientation. The objective is that the user or player can view different areas of the same or other softwares at the same time.
 
 ## When we need a split screen?
 It's an option to implement when we have multiple primary focus points that we need to have them at the same time on the screen and under control. Some exemples of software that use this technique can be any 3D modeling program. In video games, the common case is a game with local multiplayer, but not all local multiplayer games need a split screen. If the players can not separate from each other and leave the screen on the stage, you can search for an alternative to the split screen.
