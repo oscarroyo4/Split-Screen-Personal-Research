@@ -56,6 +56,7 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
+	//TODO 8: Uncomment this part and every camera will move with their respective keys.
 	if (App->render->num_of_cameras >= 1) 
 	{
 		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) App->render->cameras.At(0)->data->rect.y -= floor(200.0f * dt);

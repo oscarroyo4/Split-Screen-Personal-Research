@@ -62,8 +62,8 @@ bool j1Render::CreateCameras()
 	}
 	else 
 	{
-		//TODO 4: Store the screen width and height in local variables. Create four local variables for the number of columns and the current one and 
-		//the number of rows and the current one. Also we need a bool to now if we need to resize any of the cameras or not.
+		//TODO 4: Store the screen width and height in local variables. Create four local variables for: the number of columns, the current column,
+		// the number of rows and the current row. Also we need a bool to know if we need to resize any of the cameras or not.
 		int screen_width = App->win->screen_surface->w;
 		int screen_height = App->win->screen_surface->h;
 		int columns = 1;
@@ -118,8 +118,8 @@ bool j1Render::CreateCameras()
 			camera_aux->screen_section.h = (screen_height / rows) - (margin*2);
 			camera_aux->screen_section.y = (camera_aux->screen_section.h * current_row) + (margin * ((current_row*2)+1));
 			
-			//TODO 6: We need to change the current column and current row when we finish each loop. Remember that if we change the current row the current column
-			//has to be 0 again.
+			//TODO 6: Un-comment this hole part. We need to change the current column and current row when we finish each loop. Remember that if we change the current row 
+			// the current column has to be 0 again.
 			if (current_column < columns - 1) 
 			{
 				current_column++;
@@ -259,7 +259,7 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h, Camera* cam) const
 {
 	float scale = App->win->GetScale();
-	//TODO 7: Create two local rects, one for the texture we are checking and one for the camera position in screen. After this, chec if they have intersection with eachother.
+	//TODO 7: Create two local rects, one for the texture we are checking and one for the camera position in screen. After this, check if they intersect with eachother.
 	SDL_Rect r = { x * scale, y * scale, w * scale, h * scale };
 	SDL_Rect cam_r = { cam->rect.x + cam->screen_section.x, cam->rect.y + cam->screen_section.y, cam->rect.w, cam->rect.h };
 	return SDL_HasIntersection(&r, &cam_r);
