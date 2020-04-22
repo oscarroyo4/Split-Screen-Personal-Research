@@ -1,4 +1,4 @@
-I am [Oscar Royo](https://github.com/oscarroyo4) , student of the [Video Games Degree by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second year’s
+I am [Oscar Royo](https://github.com/oscarroyo4) , student of the [Video Games Degree by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second yearâ€™s
 subject Project 2.
 
 Go to the repository of the [Split Screen](https://github.com/oscarroyo4/Split_Screen-Personal_Research).
@@ -123,7 +123,47 @@ void j1Map::Draw()
 	}
 }
 ```
+```
+bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y) const
+{
+	bool ret = true;
+	uint scale = App->win->GetScale();
 
+	SDL_Rect rect;
+	rect.x = (int)(-cam->rect.x * speed) + x * scale;
+	rect.y = (int)(-cam->rect.y * speed) + y * scale;
+	if(section != NULL)
+	{
+		rect.w = section->w;
+		rect.h = section->h;
+	}
+	else
+	{
+		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
+	}
+
+	rect.w *= scale;
+	rect.h *= scale;
+
+	SDL_Point* p = NULL;
+	SDL_Point pivot;
+
+	if(pivot_x != INT_MAX && pivot_y != INT_MAX)
+	{
+		pivot.x = pivot_x;
+		pivot.y = pivot_y;
+		p = &pivot;
+	}
+
+	if(SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, SDL_FLIP_NONE) != 0)
+	{
+		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+		ret = false;
+	}
+
+	return ret;
+}
+```
 ## Improvements
 Some problems with this system are:
 
