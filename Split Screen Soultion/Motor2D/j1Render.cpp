@@ -259,7 +259,7 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h, Camera* cam) const
 {
 	float scale = App->win->GetScale();
-
+	//TODO 7: Create two local rects, one for the texture we are checking and one for the camera position in screen. After this, chec if they have intersection with eachother.
 	SDL_Rect r = { x * scale, y * scale, w * scale, h * scale };
 	SDL_Rect cam_r = { cam->rect.x + cam->screen_section.x, cam->rect.y + cam->screen_section.y, cam->rect.w, cam->rect.h };
 	return SDL_HasIntersection(&r, &cam_r);
