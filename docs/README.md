@@ -177,8 +177,8 @@ In the config file create a new child called camera that stores the quantity of 
 ### TODO 2
 In the j1Render.h create some new variables and make a list of cameras. The new variables will store:
 
--Number of cameras
--Margin
+- Number of cameras
+- Margin
 ### TODO 3
 On the Awake function of j1Render.cpp load the two variables from the config file and execute the function to create the cameras.
 ### TODO 4
@@ -204,9 +204,12 @@ Now it shoud work, the only thing is the movement of the cameras. In the j1Scene
 ## Improvements
 Some problems with this system are:
 
--The number of cameras is fixed during execution. You could implement a change of the number of cameras in real-time, you have to add a DeleteCameras() funciton and a variable input in the CreateCameras() function to tell it how many cameras to create.
--You can't decide where to place each camera. For example, you can't place the camera 1 in the right bottom corner, it will always follow an order.
--Also it doesn't have the option to do Voronoi Split screen. If you are interested in how to imlement a Voronoi Split screen, here you can find some information:
+- The number of cameras is fixed during execution. You could implement a change of the number of cameras in real-time, you have to add a DeleteCameras() funciton and a variable input in the CreateCameras() function to tell it how many cameras to create.
+- You can't decide where to place each camera. For example, you can't place the camera 1 in the right bottom corner, it will always follow an order.
+- Also it doesn't have the option to do Voronoi Split screen. If you are interested in how to imlement a Voronoi Split screen, here you can find some information:
+
 https://mattwoelk.github.io/voronoi_split_screen_notes/
+
 https://www.reddit.com/r/gaming/comments/5hehly/why_arent_developers_doing_split_screen_anymore/
+
 https://www.youtube.com/watch?v=tu-Qe66AvtY (25:36s)
