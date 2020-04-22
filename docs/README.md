@@ -58,9 +58,9 @@ With two players, Voronoi works pretty well. But when we add 4 players in total 
 *Test of Voronoi with 4 players in c++.*
 
 ## Games that create new windows
-Some games have multiple primary focus points, but don't have a local multiplayer mode. In this cases, this games can create new windows with their own camera, to see the primary focus points that the player wants. This games don't need a split screen and the player can chose what points and how meny he wants to have. They are usually management games, an example is an old game named *Transport Tycoon*.
+Some games have multiple primary focus points, but don't have a local multiplayer mode. In this cases, this games can create new windows with their own camera, to see the primary focus points that the player wants. This games don't need a split screen and the player can chose what points and how meny he wants to have. They are usually management games, an example is *Roller Coaster Tycoon*, the first one.
 
-![](Transport_Tycoon.gif)
+![](MultipleWindows.jpg)
 
 *Gif of Transport Tycoon with some windows.*
 
