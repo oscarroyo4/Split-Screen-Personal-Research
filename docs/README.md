@@ -68,7 +68,6 @@ Some games have multiple primary focus points, but don't have a local multiplaye
 We will make a normal split screen capable of splitting 1, 2, 3 or 4 cameras (camera quantity is limited to 4 because of the screen size). It will not be Voronoi because they don't use rects and it's very complex.
 
 3 Cameras | 4 Cameras
--|-
 ![alt](Solution_3Cams.PNG) | ![alt](Solution_4Cams.PNG)
 
 ## Important changes (code)
