@@ -71,10 +71,11 @@ bool j1Render::CreateCameras()
 
 		bool resize = false;
 
-		//TODO 3: If the width of each camera is smaller than half of the screen height, we add a row, else columns will be the number of cameras. 
-		//Inside the if, if the number of cameras is pair, the number of columns will depend in the rows, else we add a column and set the resize variable to true.
+		//TODO 3: We check if the width of each camera is smaller than half of the screen height.
 		if (screen_width / num_of_cameras < screen_height * 0.5f) 
 		{
+			//TODO 3.1: Here we add a row and check if the number of cameras is pair. If it is, the number of columns will depend in the rows (you have to make a little operation), 
+			// else we add a column and set the resize variable to true.
 			rows++;
 			if (num_of_cameras % 2 == 0) {
 				columns = num_of_cameras / rows;
@@ -87,8 +88,10 @@ bool j1Render::CreateCameras()
 		}
 		else 
 		{
+			//TODO 3.2: The number of columns will be the number of cameras.
 			columns = num_of_cameras;
 		}
+
 		for (int num = 0; num < num_of_cameras; num++) 
 		{
 			Camera* camera_aux = new Camera();
