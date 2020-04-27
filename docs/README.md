@@ -178,10 +178,7 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 ### TODO 1
 In the config file create a new child called camera that stores the quantity of cameras and the margin between them.
 ### TODO 2
-In the j1Render.h create some new variables and make a list of cameras. The new variables will store:
-
-- Number of cameras
-- Margin
+In the j1Render.h create a new variable that will store the size of the margin and make a list of cameras.
 ### TODO 3
 On the Awake function of j1Render.cpp load the two variables from the config file and execute the function to create the cameras.
 ### TODO 4
