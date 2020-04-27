@@ -58,14 +58,14 @@ public:
 	void SetBackgroundColor(SDL_Color color);
 
 public:
-	//TODO 2: Create some new variables and make a list of cameras.
-	int num_of_cameras;
 	int max_cameras = 4;
+	//TODO 2: Create a new variable and make a list of cameras.
+	int num_of_cameras;
 	int margin;
+	p2List<Camera*>		cameras;
 	SDL_Renderer*		renderer;
 	SDL_Rect			viewport;
 	SDL_Color			background;
-	p2List<Camera*>		cameras;
 };
 
 #endif // __j1RENDER_H__

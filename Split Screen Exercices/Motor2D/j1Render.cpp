@@ -42,7 +42,7 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		//TODO 3: Load the two variables from the config file and execute the function to create the cameras.
+		//TODO 3: Load the two variables from the config file into the created variables and execute the function to create the cameras.
 
 
 
