@@ -178,35 +178,25 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 ### TODO 1
 In the config file create a new child called camera that stores the quantity of cameras and the margin between them.
 ### TODO 2
-In the j1Render.h create a new variable that will store the size of the margin and make a list of cameras.
+On the Awake function of j1Render.cpp load the two variables from the config file and execute the function to create the cameras. There are some variables in this module to store this values.
 ### TODO 3
-On the Awake function of j1Render.cpp load the two variables from the config file and execute the function to create the cameras.
-### TODO 4
-We will now start with the creation of the cameras.
-
-Store the screen width and height in local variables. 
-
-Create four local variables for: the number of columns, the current column, the number of rows and the current row. 
-
-Also we need a bool to know if we need to resize any of the cameras or not.
-### TODO 5
 Now we check if the width of each camera is smaller than half of the screen height. If it is we add a row, else the number of columns will be the same as the number of cameras. 
 
 Inside the if, we will check if the number of cameras is pair. If it is, the number of columns will depend in the rows. Else we add a column and later we will have to resize one of the cameras.
+### TODO 4
+We need to change the current column and current row when we finish each loop. Remember that if we change the current row the current column has to be 0 again.
+### TODO 5
+Add the modified auxiliar camera to the cameras list.
 ### TODO 6
-Uncomment this part, it goes through all the cameras and assigns the right width, height and position. 
-
-After this we need to change the current column and current row when we finish each loop. Remember that if we change the current row the current column has to be 0 again.
+In the IsOnCamera() function create two local rects, one for the texture we are checking (keep in mind the scale) and one for the camera position in screen. After this, check if they have intersect with eachother.
 ### TODO 7
-In the IsOnCamera() function create two local rects, one for the texture we are checking and one for the camera position in screen. After this, check if they have intersect with eachother.
-### TODO 8
 Now it shoud work, the only thing is the movement of the cameras. In the j1Scene.cpp uncomment this part and every camera will move with their respective keys.
 ## Improvements
 Some problems with this system are:
 
 - The number of cameras is fixed during execution. You could implement a change of the number of cameras in real-time, you have to add a DeleteCameras() funciton and a variable input in the CreateCameras() function to tell it how many cameras to create.
 - You can't decide where to place each camera. For example, you can't place the camera 1 in the right bottom corner, it will always follow an order.
-- Also it doesn't have the option to do Voronoi Split screen. If you are interested in how to imlement a Voronoi Split screen, here you can find some information:
+- Also it doesn't have the option to do Voronoi Split screen. If you are interested in how to implement a Voronoi Split screen, here you can find some information:
 
 https://mattwoelk.github.io/voronoi_split_screen_notes/
 
