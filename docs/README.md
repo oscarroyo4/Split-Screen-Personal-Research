@@ -85,7 +85,7 @@ public:
 };
 ```
 
-2.For each blit of the map we have to do a for to go through all cameras and check if the tile is inside the camera view:
+2. For each blit of the map we have to do a for to go through all cameras and check if the tile is inside the camera view:
 
 ```
 void j1Map::Draw()
