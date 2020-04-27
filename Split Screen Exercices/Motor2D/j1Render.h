@@ -59,10 +59,9 @@ public:
 
 public:
 	int max_cameras = 4;
-	//TODO 2: Create a new variable and make a list of cameras.
 	int num_of_cameras;
-
-
+	int margin;
+	p2List<Camera*>		cameras;
 	SDL_Renderer*		renderer;
 	SDL_Rect			viewport;
 	SDL_Color			background;

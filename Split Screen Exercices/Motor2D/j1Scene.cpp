@@ -56,7 +56,7 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	//TODO 8: Uncomment this part and every camera will move with their respective keys.
+	//TODO 7: Uncomment this part and every camera will move with their respective keys.
 	/*
 	if (App->render->num_of_cameras >= 1) 
 	{

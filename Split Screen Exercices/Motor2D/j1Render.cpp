@@ -42,7 +42,7 @@ bool j1Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		//TODO 3: Load the two variables from the config file into the created variables and execute the function to create the cameras.
+		//TODO 2: Load the two variables from the config file into the created variables and execute the function to create the cameras.
 
 
 
@@ -62,17 +62,16 @@ bool j1Render::CreateCameras()
 	}
 	else 
 	{
-		//TODO 4: Store the screen width and height in local variables. Create four local variables for: the number of columns, the current column,
-		// the number of rows and the current row. Also we need a bool to know if we need to resize any of the cameras or not.
+		int screen_width = App->win->screen_surface->w;
+		int screen_height = App->win->screen_surface->h;
+		int columns = 1;
+		int rows = 1;
+		int current_column = 0;
+		int current_row = 0;
 
+		bool resize = false;
 
-
-
-
-
-
-
-		//TODO 5: If the width of each camera is smaller than half of the screen height, we add a row, else columns will be the number of cameras. 
+		//TODO 3: If the width of each camera is smaller than half of the screen height, we add a row, else columns will be the number of cameras. 
 		//Inside the if, if the number of cameras is pair, the number of columns will depend in the rows, else we add a column and set the resize variable to true.
 
 
@@ -84,8 +83,7 @@ bool j1Render::CreateCameras()
 
 
 
-		/*
-		//TODO 6: Uncomment this hole part. You will need to adapt the name of some variables.
+		
 		for (int num = 0; num < num_of_cameras; num++) 
 		{
 			Camera* camera_aux = new Camera();
@@ -112,7 +110,7 @@ bool j1Render::CreateCameras()
 			camera_aux->screen_section.h = (screen_height / rows) - (margin*2);
 			camera_aux->screen_section.y = (camera_aux->screen_section.h * current_row) + (margin * ((current_row*2)+1));
 			
-			//TODO 6.1: Here we need to change the current column and current row when we finish each loop. Remember that if we change the current row 
+			//TODO 4: Here we need to change the current column and current row when we finish each loop. Remember that if we change the current row 
 			// the current column has to be 0 again.
 
 
@@ -121,10 +119,9 @@ bool j1Render::CreateCameras()
 
 
 
-			//We add the auxiliar camera to the cameras list.
+			//TODO 5: Add the modified auxiliar camera to the cameras list.
 			cameras.add(camera_aux);
 		}
-		*/
 	}
 	return ret;
 }
@@ -251,7 +248,7 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, Camera* cam, const SDL_R
 bool j1Render::IsOnCamera(const int& x, const int& y, const int& w, const int& h, Camera* cam) const
 {
 	float scale = App->win->GetScale();
-	//TODO 7: Create two local rects, one for the texture we are checking and one for the camera position in screen. After this, check if they intersect with eachother.
+	//TODO 6: Create two local rects, one for the texture we are checking (keep in mind the scale) and one for the camera position in screen. After this, check if they intersect with eachother.
 
 
 
