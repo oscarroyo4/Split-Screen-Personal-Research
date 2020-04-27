@@ -181,7 +181,9 @@ In the config file create a new child called camera that stores the quantity of 
 On the Awake function of j1Render.cpp load the two variables from the config file and execute the function to create the cameras. There are some variables in this module to store this values.
 ### TODO 3
 We check if the width of each camera is smaller than half of the screen height.
+
 TODO 3.1: Here we add a row and check if the number of cameras is pair. If it is, the number of columns will depend in the rows (you have to make a little operation), else we add a column and set the resize variable to true.
+
 TODO 3.2: The number of columns will be the number of cameras.
 ### TODO 4
 We need to change the current column and current row when we finish each loop. Remember that if we change the current row the current column has to be 0 again.
