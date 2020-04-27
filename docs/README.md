@@ -22,7 +22,7 @@ Some exemples of this are the games *overcoocked* or *Cuphead*, that the players
 Depending of the game, we don't need to implement a split screen, we can take an alternative that fulfills the function we need. Here are some alternatives and their advantages and disadvantages.
 
 **The screen blocks the player if he tries to pass it.**
-This is the tipically option that developers do when they don't want to imlement a split screen. Games like *Wizard of Legends* or "Unravel" want the players to stay together, blocking the option to separate.
+This is the tipically option that developers do when they don't want to imlement a split screen. Games like *Wizard of Legends* or *Unravel* want the players to stay together, blocking the option to separate.
 
 **Players can move off the screen.**
 This is a terrible option. The players can go off the screen and they can not see where they are. Practically no game uses this option.
@@ -40,7 +40,7 @@ If the player is pushing an edge of the screen he drags it, and the other player
 In this option, the camera zooms out when the players move away from each other to keep the players inside the screen up to a limit, but it doesn't resolve the problems.
 
 **Split screen.**
-If we choose this option, we resolve the previous problems and we don't affect the gameplay of the players, but we find other problems. We can give to each player their own camera and the total control of it, but they will lose a 50% or 75% of their screen depending if they are 2, 3 or more players. For example, any game in first person with local multiplayer needs a split screen because each player needs to have their own camera. Another problem is the large amount of resources we spend on the split screen, because it is necessary to paint the game more times per frame, one time for each camera. This is one of the most important reasons why the split screen is not used in this days. 
+If we choose this option, we resolve the previous problems and we don't affect the gameplay of the players, but we find other problems. We can give to each player their own camera and the total control of it, but they will lose a 50% or 75% of their screen depending if they are 2, 3 or more players. An example is any game in first person with local multiplayer, it needs a split screen because each player needs to have their own camera but every player will lose part of his screen. Another problem is the large amount of resources we spend on the split screen, because it is necessary to paint the game more times per frame, one time for each camera. This is one of the most important reasons why the split screen is not used in this days. 
 
 In most cases in local multiplayer games, more exactly in cooperative games, most of the time the players are together, and we are spending a lot of resources needlessly. If we have this situation, we can imeplement the Voronoi split screen.
 
@@ -62,10 +62,11 @@ Some games have multiple primary focus points, but don't have a local multiplaye
 
 ![](MultipleWindows.jpg)
 
-*Gif of Transport Tycoon with some windows.*
+*Gif of Roller Coaster Tycoon with some windows.*
 
 # Our Split Screen and implementation
 We will make a normal split screen capable of splitting 1, 2, 3 or 4 cameras (camera quantity is limited to 4 because of the screen size). It will not be Voronoi because they don't use rects and it's very complex.
+
 3 Cameras | 4 Cameras
 -|-
 ![alt](Solution_3Cams.PNG) | ![alt](Solution_4Cams.PNG)
