@@ -1,5 +1,5 @@
-I am [Oscar Royo](https://github.com/oscarroyo4) , student of the [Video Games Degree by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second year’s
-subject Project 2.
+I am [Oscar Royo](https://github.com/oscarroyo4) , student of the [Bachelor’s Degree in Video Games by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second year’s
+subject Project 2, under supervision of lecturer [Marc Garrigó](https://www.linkedin.com/in/mgarrigo/).
 
 To see the full github project go to the repository of the [Split Screen](https://github.com/oscarroyo4/Split_Screen-Personal_Research).
 
